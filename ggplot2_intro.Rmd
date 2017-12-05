@@ -1,0 +1,134 @@
+---
+title: "data visualization with ggplot2"
+author: "Julia Silge"
+email: "@juliasilge"
+ratio: 16x10
+maketitle: true
+output:
+  rmdshower::shower_presentation:
+    self_contained: false
+    katex: true
+    theme: stack
+---
+
+## Understanding the grammar of graphics
+
+- ggplot2 is a data visualization library for R
+- Developed by Hadley Wickham
+- ggplot2 is based on a **grammar**
+- It's powerful, flexible, beautiful, based on the features in your data, designed for iterative workflows
+
+# Do not draw with your data
+
+## Elements of the grammar
+
+> - Data + mapping (aesthetic)
+> - Layers
+> - Scales
+> - Coordinate systems
+> - Faceting
+> - Themes
+
+
+## Gapminder data
+
+```{r}
+library(gapminder)
+gapminder
+```
+
+## Data + aesthetic mapping
+
+```{r, fig.width=4.5, fig.height=4.5}
+library(ggplot2)
+ggplot(gapminder, aes(x = gdpPercap, y = lifeExp))
+```
+
+## Now add a layer
+
+```{r, fig.width=4.5, fig.height=4.5}
+ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
+    geom_point()
+```
+
+## Now add a scale
+
+```{r, fig.width=4.5, fig.height=4.5}
+ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
+    geom_point() +
+    scale_x_log10()
+```
+
+
+## Another aesthetic mapping?
+
+```{r, fig.width=6, fig.height=4.5}
+ggplot(gapminder, aes(x = gdpPercap, y = lifeExp, color = continent)) +
+    geom_point() +
+    scale_x_log10()
+```
+
+## Too many points `r emo::ji("thinking")`
+
+```{r, fig.width=6, fig.height=4.5}
+ggplot(gapminder, aes(x = gdpPercap, y = lifeExp, color = continent)) +
+    geom_point(alpha = 0.4, size = 2) +
+    scale_x_log10()
+```
+
+## Add a best fit line `r emo::ji("smiley")`
+
+```{r, fig.width=6, fig.height=4.5}
+ggplot(gapminder, aes(x = gdpPercap, y = lifeExp, color = continent)) +
+    geom_point(alpha = 0.4, size = 2) +
+    scale_x_log10() + geom_smooth(method = "lm")
+```
+
+
+## Speaking of lines...
+
+```{r, fig.width=6, fig.height=4.5}
+ggplot(gapminder, aes(x = year, y = lifeExp, color = country)) +
+    geom_line(size = 1.5, alpha = 0.8, show.legend = FALSE) +
+    scale_color_manual(values = country_colors)
+```
+
+## Facetting
+
+```{r, fig.width=9, fig.height=3}
+ggplot(gapminder, aes(x = year, y = lifeExp, color = country)) +
+    geom_line(size = 1.5, alpha = 0.8, show.legend = FALSE) +
+    scale_color_manual(values = country_colors) +
+    facet_wrap(~continent, nrow = 1)
+```
+
+## Themes
+
+```{r, fig.width=9, fig.height=3}
+ggplot(gapminder, aes(x = year, y = lifeExp, color = country)) +
+    geom_line(size = 1.5, alpha = 0.8, show.legend = FALSE) +
+    scale_color_manual(values = country_colors) +
+    facet_wrap(~continent, nrow = 1) +
+    theme_minimal()
+```
+
+## Themes
+
+```{r, fig.width=9, fig.height=3}
+library(silgelib)
+ggplot(gapminder, aes(x = year, y = lifeExp, color = country)) +
+    geom_line(size = 1.5, alpha = 0.8, show.legend = FALSE) +
+    scale_color_manual(values = country_colors) +
+    facet_wrap(~continent, nrow = 1) +
+    theme_roboto()
+```
+
+# Tidy data principles = `r emo::ji("tada")`
+
+## More resources
+
+- About ggplot2: http://ggplot2.tidyverse.org/
+- Extensions to ggplot2: http://www.ggplot2-exts.org/
+- [Data visualization chapter](http://r4ds.had.co.nz/data-visualisation.html) in *R for Data Science*
+- [*ggplot2: Elegant Graphics for Data Analysis*](http://amzn.to/2fncG50)
+

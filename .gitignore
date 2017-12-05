@@ -1,0 +1,9 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+rsconnect*
+*cache
+*html
+*_files/rmdshower.stack/*
+*_files/rmdshower/*
