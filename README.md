@@ -2,7 +2,7 @@
 
 Here I'm working on tutorial materials for data visualization using [ggplot2](http://ggplot2.tidyverse.org/).
 
-<img src="figs/hex-ggplot2.png" alt="ggplot2" width="120" height="120"/>
+<img src="figs/hex-ggplot2.png" alt="ggplot2" width="120"/>
 
 Find `.Rmd` files and such in this repo.
 
