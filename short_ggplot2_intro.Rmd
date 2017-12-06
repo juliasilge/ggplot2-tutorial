@@ -2,14 +2,25 @@
 title: "data visualization with ggplot2"
 author: "Julia Silge"
 email: "@juliasilge"
-ratio: 16x10
-maketitle: true
+maketitle: false
 output:
   rmdshower::shower_presentation:
     self_contained: false
     katex: true
-    theme: stack
+    theme: ribbon
+    ratio: 16x10
 ---
+
+## Data Visualization with ggplot2 
+
+<img src="figs/hex-ggplot2.png" alt="ggplot2" width="120"/>
+
+### Julia Silge (Stack Overflow)
+
+#### [\@juliasilge](https://twitter.com/juliasilge)
+
+#### [http://juliasilge.com/](http://juliasilge.com/)
+
 
 ## Understanding the grammar of graphics
 
@@ -39,21 +50,21 @@ gapminder
 
 ## Data + aesthetic mapping
 
-```{r, fig.width=4.5, fig.height=4.5}
+```{r, fig.width=4, fig.height=3.7}
 library(ggplot2)
 ggplot(gapminder, aes(x = gdpPercap, y = lifeExp))
 ```
 
 ## Now add a layer
 
-```{r, fig.width=4.5, fig.height=4.5}
+```{r, fig.width=4, fig.height=3.7}
 ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
     geom_point()
 ```
 
 ## Now add a scale
 
-```{r, fig.width=4.5, fig.height=4.5}
+```{r, fig.width=4, fig.height=3.7}
 ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
     geom_point() +
     scale_x_log10()
@@ -62,7 +73,7 @@ ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
 
 ## Another aesthetic mapping?
 
-```{r, fig.width=6, fig.height=4.5}
+```{r, fig.width=4.9, fig.height=3.7}
 ggplot(gapminder, aes(x = gdpPercap, y = lifeExp, color = continent)) +
     geom_point() +
     scale_x_log10()
@@ -70,7 +81,7 @@ ggplot(gapminder, aes(x = gdpPercap, y = lifeExp, color = continent)) +
 
 ## Too many points `r emo::ji("thinking")`
 
-```{r, fig.width=6, fig.height=4.5}
+```{r, fig.width=4.9, fig.height=3.7}
 ggplot(gapminder, aes(x = gdpPercap, y = lifeExp, color = continent)) +
     geom_point(alpha = 0.4, size = 2) +
     scale_x_log10()
@@ -78,7 +89,7 @@ ggplot(gapminder, aes(x = gdpPercap, y = lifeExp, color = continent)) +
 
 ## Add a best fit line `r emo::ji("smiley")`
 
-```{r, fig.width=6, fig.height=4.5}
+```{r, fig.width=4.9, fig.height=3.7}
 ggplot(gapminder, aes(x = gdpPercap, y = lifeExp, color = continent)) +
     geom_point(alpha = 0.4, size = 2) +
     scale_x_log10() + geom_smooth(method = "lm")
@@ -87,7 +98,7 @@ ggplot(gapminder, aes(x = gdpPercap, y = lifeExp, color = continent)) +
 
 ## Speaking of lines...
 
-```{r, fig.width=6, fig.height=4.5}
+```{r, fig.width=5, fig.height=3.1}
 ggplot(gapminder, aes(x = year, y = lifeExp, color = country)) +
     geom_line(size = 1.5, alpha = 0.8, show.legend = FALSE) +
     scale_color_manual(values = country_colors)
@@ -95,7 +106,7 @@ ggplot(gapminder, aes(x = year, y = lifeExp, color = country)) +
 
 ## Facetting
 
-```{r, fig.width=9, fig.height=3}
+```{r, fig.width=9, fig.height=2.9}
 ggplot(gapminder, aes(x = year, y = lifeExp, color = country)) +
     geom_line(size = 1.5, alpha = 0.8, show.legend = FALSE) +
     scale_color_manual(values = country_colors) +
@@ -104,7 +115,7 @@ ggplot(gapminder, aes(x = year, y = lifeExp, color = country)) +
 
 ## Themes
 
-```{r, fig.width=9, fig.height=3}
+```{r, fig.width=9, fig.height=2.9}
 ggplot(gapminder, aes(x = year, y = lifeExp, color = country)) +
     geom_line(size = 1.5, alpha = 0.8, show.legend = FALSE) +
     scale_color_manual(values = country_colors) +
@@ -114,7 +125,7 @@ ggplot(gapminder, aes(x = year, y = lifeExp, color = country)) +
 
 ## Themes
 
-```{r, fig.width=9, fig.height=3}
+```{r, fig.width=9, fig.height=2.9}
 library(silgelib)
 ggplot(gapminder, aes(x = year, y = lifeExp, color = country)) +
     geom_line(size = 1.5, alpha = 0.8, show.legend = FALSE) +
@@ -123,7 +134,7 @@ ggplot(gapminder, aes(x = year, y = lifeExp, color = country)) +
     theme_roboto()
 ```
 
-# Tidy data principles = `r emo::ji("tada")`
+# Tidy data = `r emo::ji("tada")`
 
 ## More resources
 
