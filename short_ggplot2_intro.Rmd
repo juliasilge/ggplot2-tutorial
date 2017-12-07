@@ -25,7 +25,7 @@ output:
 ## Understanding the grammar of graphics
 
 - ggplot2 is a data visualization library for R
-- Developed by Hadley Wickham
+- Developed by Hadley Wickham & Winston Chang
 - ggplot2 is based on a **grammar**
 - It's powerful, flexible, beautiful, based on the features in your data, designed for iterative workflows
 
